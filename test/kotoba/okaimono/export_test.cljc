@@ -30,3 +30,24 @@
     (is (str/includes? json "\"total\":3000"))
     (is (str/includes? json "\"cod\":true"))
     (is (str/includes? json "\"dispatchable\":false"))))
+
+
+;; ── 制御文字を含む実データでも壊れない出力 ──────────────────
+
+(deftest json-escapes-every-control-character
+  (testing "RFC 8259 は U+0020 未満の**すべて**のエスケープを要求する。
+            決済監査に流す注文台帳が、顧客名にタブが混ざっただけでパース不能になっていた。"
+    (let [o (ok/order "o-1" (str "s" (char 9) "1" (char 13) (char 1)) "山田太郎"
+                      [(ok/line "sku-1" "x" 1 100)])
+          out (ex/orders->json [o])]
+      (is (not (some #(< (int %) 0x20) out))
+          "出力に生の制御文字が残っていない")
+      (is (str/includes? out "\\t"))
+      (is (str/includes? out "\\r"))
+      (is (str/includes? out "\\u0001")))))
+
+(deftest csv-quotes-carriage-returns
+  (testing "\\r が引用のトリガに入っていなかった。"
+    (let [o (ok/order "o-1" (str "A" (char 13) "B") "cust" [(ok/line "sku-1" "x" 1 100)])
+          out (ex/orders->csv [o])]
+      (is (str/includes? out (str "\"A" (char 13) "B\""))))))
