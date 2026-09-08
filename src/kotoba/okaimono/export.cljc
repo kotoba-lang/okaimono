@@ -3,7 +3,7 @@
 
   Renders orders and line items to CSV and JSON for settlement audit and
   downstream reporting. Pure data → text: no network."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [kotoba.okaimono :as ok]))
 
 (defn- csv-cell

@@ -10,7 +10,7 @@
   may be dispatched.
 
   Portable (.cljc) across JVM / ClojureScript / SCI / GraalVM."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 ;; ---------------------------------------------------------------------------
 ;; Line item

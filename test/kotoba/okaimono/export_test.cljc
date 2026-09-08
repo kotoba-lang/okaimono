@@ -1,6 +1,6 @@
 (ns kotoba.okaimono.export-test
   (:require [clojure.test :refer [deftest is testing]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [kotoba.okaimono :as ok]
             [kotoba.okaimono.export :as ex]))
 

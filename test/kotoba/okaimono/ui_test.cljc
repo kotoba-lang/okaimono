@@ -1,6 +1,6 @@
 (ns kotoba.okaimono.ui-test
   (:require [clojure.test :refer [deftest is testing]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [kotoba.okaimono :as ok]
             [kotoba.okaimono.ui :as ui]))
 
