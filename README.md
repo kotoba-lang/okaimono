@@ -82,7 +82,7 @@ escaped) for orders and line items.
 ## Test
 
 ```sh
-clojure -M:test
+kbb -M:test
 ```
 
 ## License
