@@ -37,6 +37,6 @@ library。`omise`（店舗）と対になる注文側。ネットワーク・I/O
 ## 検証
 
 ```bash
-clojure -M:test   # 12 tests / 50 assertions
-clojure -M:lint   # errors 0
+kbb -M:test   # 12 tests / 50 assertions
+kbb -M:lint   # errors 0
 ```
