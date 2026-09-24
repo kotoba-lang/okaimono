@@ -1,5 +1,5 @@
 (ns kotoba.okaimono-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [kotoba.okaimono :as ok]))
 
 (def lines [(ok/line "sku-1" "Coffee beans 200g" 2 900)
